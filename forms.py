@@ -23,8 +23,9 @@ class RequestQuizForm(FlaskForm):
     ("sql","SQL"),
     ("cms", "CMS"),
     ("code", "Code"),
-    ("devops", "DevOps")])
-    difficulty = SelectField('Choose your pain', choices=[("Easy", "Easy"), ("Medium", "Medium"), ("Hard", "Hard")])
-    limit=SelectField('Choose the length of your suffering', choices=[('1', '1'), ('5', '5'), ('10', '10')])
+    ("devops", "DevOps"),
+    (None, None)])
+    difficulty = SelectField('Choose your pain', choices=[("Easy", "Easy"), ("medium", "medium"), ("hard", "hard"), (None, None)])
+    limit=SelectField('Choose the length of your suffering', choices=[('1', '1'), ('5', '5'), ('10', '10'), (None, None)])
 
 

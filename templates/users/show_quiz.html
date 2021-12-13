@@ -4,9 +4,9 @@
 
 {% block content %}
 
-{% for question in resp %}
-<p>question</p>
+{% for question in jsonr %}
 <p>{{question.question}}</p>
+<p>{{question.answers}}</p>
 
 {% endfor%}
 

@@ -1,7 +1,7 @@
 import os
 import requests
 from flask_bcrypt import Bcrypt
-from flask import Flask, render_template, flash, redirect, session, g, request
+from flask import Flask, render_template, flash, redirect, session, g, request, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, User, db
 #from secrets import secret_key
@@ -9,7 +9,7 @@ from forms import NewUserForm, LoginForm, RequestQuizForm
 from sqlalchemy.exc import IntegrityError
 
 CURR_USER_KEY = "curr_user"
-BASE_URL = "https://quizapi.io/api/v1/questions?apiKey=Fkbe9a5GDIrevApVpEzX3v5lDBWxBVDnSzyccEf1" #This is the sole endpoint available for now
+BASE_URL = "https://quizapi.io/api/v1/questions" #This is the sole endpoint available for now
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = (os.environ.get('DATABASE_URL', 'postgresql:///caps1_db'))
@@ -125,17 +125,19 @@ def users_show(user_id):
 
     form= RequestQuizForm()
     if form.validate_on_submit():
-        params={}
-        params["apiKey"] = g.user.api_key
+        payload={}
+        payload["apiKey"] = g.user.api_key
         for fieldname, value in form.data.items():
-            if fieldname != "csrf_token":
-                params[fieldname] = value
+            if (fieldname != "csrf_token"):
+                if(value != None):
+                    payload[fieldname] = value
         print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
-        print(params)
-        resp = requests.get(BASE_URL, params=params)
-        import pdb
-        pdb.set_trace()
-        return render_template("/users/show_quiz.html", resp=resp)
+        resp = requests.post(BASE_URL, json=payload)
+        jsonr = resp.json()
+   
+
+        return render_template("/users/show_quiz.html", jsonr=jsonr)
+#        return render_template("/users/show_quiz.html", resp=resp)
 
     return render_template("/users/quiz_form.html", form=form)
 #    resp = requests.get(BASE_URL, params=params)
