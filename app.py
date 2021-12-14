@@ -131,18 +131,16 @@ def users_show(user_id):
             if (fieldname != "csrf_token"):
                 if(value != None):
                     payload[fieldname] = value
-        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
         resp = requests.post(BASE_URL, json=payload)
         jsonr = resp.json()
-   
+
+
+
 
         return render_template("/users/show_quiz.html", jsonr=jsonr)
-#        return render_template("/users/show_quiz.html", resp=resp)
 
     return render_template("/users/quiz_form.html", form=form)
-#    resp = requests.get(BASE_URL, params=params)
 
-@app.route("/test")
-def test():
-    request.args
+
+
         
