@@ -7,6 +7,7 @@ from models import connect_db, User, db
 #from secrets import secret_key
 from forms import NewUserForm, LoginForm, RequestQuizForm
 from sqlalchemy.exc import IntegrityError
+from functions import ques_number, analize_answers, give_score
 
 CURR_USER_KEY = "curr_user"
 BASE_URL = "https://quizapi.io/api/v1/questions" #This is the sole endpoint available for now
@@ -117,7 +118,7 @@ def logout():
 # General user routes:
 
 @app.route('/users/<int:user_id>', methods=["GET", "POST"])
-def users_show(user_id):
+def show_and_handle_quiz(user_id):
     """Show user profile and show form to make a request for a quiz"""
     if g.user.id != user_id:
         flash("You have been redirected to your profile page")
@@ -133,14 +134,32 @@ def users_show(user_id):
                     payload[fieldname] = value
         resp = requests.post(BASE_URL, json=payload)
         jsonr = resp.json()
+        session["jsonr"] = jsonr
+
+        """ The following is defined to give each radio button a label-input assosiacion with an individual id 
+        dynamically generated based on the place they hold in the answers for that particular question, discarting with value = None"""
+        iter_base = analize_answers(jsonr)
 
 
 
-
-        return render_template("/users/show_quiz.html", jsonr=jsonr)
+        return render_template("/users/show_quiz.html", jsonr=jsonr, ques_number=ques_number, iter_base=iter_base)
 
     return render_template("/users/quiz_form.html", form=form)
 
+@app.route('/users/<int:user_id>/show_results', methods=["POST"])
+def handle_quiz_results(user_id):
+    """Handle form submission and compare answers to give a score"""
+    jsonr = session["jsonr"]
+    all_responses = []
+    for question in jsonr:        
+        user_resp = request.form[f"input-group {ques_number[jsonr.index(question) + 1]}"]
+        all_responses.append(user_resp)
+    score = give_score(jsonr, all_responses)
+    flash(f"Your score was {score}%!")
+    return redirect(f"/users/{g.user.id}")
+    
 
+
+    
 
         
