@@ -1,5 +1,8 @@
+#   Variables   #######################################################################
 
 ques_number = {1:'One', 2:'Two', 3:'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9:'Nine', 10:'Ten'}
+
+#   Process answers and show score  ###################################################
 
 def analize_answers(jsonr):
     """returns a list of lists, by Taking as an input a dictionary with available answers as values, 
@@ -34,24 +37,27 @@ def calculate_score(all_true_or_false):
     print(count, len(all_true_or_false))
     return count/len(all_true_or_false) * 100
 
-def give_score(jsonr, all_responses): 
+def give_score(jsonr, user_responses): 
     """Verifies user responses and gives a score: The flow is as follows:
-    all_responses = ["bla bla", "foo", "bar baz", ...] just a list of strings
+    user_responses = ["bla bla", "foo", "bar baz", ...] just a list of strings
 
     Step 1: reverse the answers dictionary by calling inverted_answers()
     Step 2: create a new list with the users answers in [answer_a, answer_c, ...] format.
     Step 3: convert the [answer_a, answer_c, ...] format in a ["true", "true", "false", ...] format and return that
     """
     #Step 1:
-    inv_answers = inverted_answers(jsonr) #[{},{},{},...] see line 26
+    #inv_answers = [{"foo": answer_a, "bar": answer_b}, {"bar":ans_a, ...:ans_b, ...}, {.,.,.}, ...]
+    inv_answers = inverted_answers(jsonr) 
+
     #Step 2:
-    all_responses_abc = [] #[answer_b, answer_a, answer_d, ...]
-    for ans_as_string in all_responses:
-        all_responses_abc.append(inv_answers[all_responses.index(ans_as_string)][ans_as_string])
+    user_responses_abc = [] #[answer_b, answer_a, answer_d, ...]
+    for ans_as_string in user_responses:
+        user_responses_abc.append(inv_answers[user_responses.index(ans_as_string)][ans_as_string])
+
     #Step 3: 
     all_true_or_false = [] #["true", "true", "false", ...]
     for quest_dict in jsonr:
-        all_true_or_false.append(quest_dict["correct_answers"][f"{all_responses_abc[jsonr.index(quest_dict)]}_correct"])
+        all_true_or_false.append(quest_dict["correct_answers"][f"{user_responses_abc[jsonr.index(quest_dict)]}_correct"])
 
     return calculate_score(all_true_or_false)
 

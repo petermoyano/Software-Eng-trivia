@@ -4,15 +4,19 @@
 
 {% block content %}
 <!-- 
-jsonr is the entire response sent by the API
-iter_base is a list of lists, where each list represents a question and holds all answers as strings
-ques_number is a dict: 1: 'One', 2: 'Two', ...}
+jsonr is the entire response sent by the API.
+
+iter_base is a list of lists, where each (list) element holds all possible answers for a specific question
+iter_base -> [['foo', 'bar', 'baz foo'], ['foo bar', ... , ], [..., , ,] ...]
+
+ques_number is a dict -> {1: 'One', 2: 'Two', ...}
+
 There are two main variables at play in this template:
-    ques_number[jsonr.index(question) + 1]      can take values "One", "Two", "Three", from ques_number
-    iter_base[jsonr.index(question)]            is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
+    ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
+    iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
  -->
 
-<form action="/users/{{g.user.id}}/show_results" method="POST">
+<form action="/users/{{g.user.id}}/calculate_score" method="POST">
 
     {% for question in jsonr %}
 

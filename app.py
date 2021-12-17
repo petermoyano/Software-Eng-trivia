@@ -121,7 +121,7 @@ def logout():
 def show_and_handle_quiz(user_id):
     """Show user profile and show form to make a request for a quiz"""
     if g.user.id != user_id:
-        flash("You have been redirected to your profile page")
+        flash("You have been redirected to your profile page", "warning")
         redirect(f"/users/{g.user.id}")
 
     form= RequestQuizForm()
@@ -137,26 +137,41 @@ def show_and_handle_quiz(user_id):
         session["jsonr"] = jsonr
 
         """ The following is defined to give each radio button a label-input assosiacion with an individual id 
-        dynamically generated based on the place they hold in the answers for that particular question, discarting with value = None"""
+        dynamically generated based on the place they hold in the answers for that particular question, and
+        discarting answers with the value of None
+        iter_base -> [['foo', 'bar', 'baz foo'], ['foo bar', ... , ], [..., , ,] ...]
+        """
         iter_base = analize_answers(jsonr)
-
-
-
+        session["iter_base"] = iter_base
         return render_template("/users/show_quiz.html", jsonr=jsonr, ques_number=ques_number, iter_base=iter_base)
 
     return render_template("/users/quiz_form.html", form=form)
 
-@app.route('/users/<int:user_id>/show_results', methods=["POST"])
+@app.route('/users/<int:user_id>/calculate_score', methods=["POST"])
 def handle_quiz_results(user_id):
     """Handle form submission and compare answers to give a score"""
     jsonr = session["jsonr"]
-    all_responses = []
+    user_responses = []
     for question in jsonr:        
         user_resp = request.form[f"input-group {ques_number[jsonr.index(question) + 1]}"]
-        all_responses.append(user_resp)
-    score = give_score(jsonr, all_responses)
+        user_responses.append(user_resp)
+    session["user_responses"] = user_responses
+
+    score = give_score(jsonr, user_responses)
+    session["score"] = score
+
     flash(f"Your score was {score}%!")
-    return redirect(f"/users/{g.user.id}")
+
+    return redirect(f"/users/{g.user.id}/show_results")
+
+@app.route('/users/<int:user_id>/show_results')
+def show_quiz_results(user_id):
+    jsonr = session["jsonr"]
+    iter_base = session["iter_base"]
+    score = session["score"]
+    user_responses = session["user_responses"]
+    return render_template("/users/show_results.html", jsonr=jsonr, ques_number=ques_number, iter_base=iter_base, score=score, user_responses=user_responses)
+
     
 
 
