@@ -15,13 +15,14 @@ There are two main variables at play in this template:
     ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
     iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
  -->
-
+<h1>Well done!</h1>
+<h3>Below you'll see the wrong answers showed in red.</h3>
 {% for question in jsonr %}
 
     <div class="accordion" id="{{ques_number[jsonr.index(question) + 1]}}">    
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
-                <button class="accordion-button btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
+                <button class="accordion-button btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
                     {{(jsonr.index(question)) + 1}} - {{question['question']}}
                 </button>
             </h2>
@@ -34,7 +35,7 @@ There are two main variables at play in this template:
                             {% if (jsonr[jsonr.index(question)]["correct_answers"][answer_ + "_correct"]) == "true" %}    
                                 
                                 <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}" value="{{answer_string}}" autocomplete="off" checked>
-                                <label class="btn btn-outline-success" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">{{answer_string}}</label>
+                                <label class="btn btn-success" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">{{answer_string}}</label>
 
                             {% else %}
 

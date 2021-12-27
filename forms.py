@@ -7,7 +7,7 @@ class NewUserForm(FlaskForm):
     """New User form"""
     username = StringField("Enter your username!", validators=[DataRequired()])
     password = PasswordField("Just let Chrome make a password for you", validators=[DataRequired()])
-    api_key = StringField("Enter your API_KEY from quizapi.io", validators=[DataRequired()])
+
 
 class LoginForm(FlaskForm):
     """Login form."""

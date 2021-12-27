@@ -15,6 +15,8 @@ There are two main variables at play in this template:
     ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
     iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
  -->
+ <h1>Quiz page.</h1>
+ <h2>Once you submit your answers, we'll show you how you did, and all correct answers</h2>
 
 <form action="/users/{{g.user.id}}/calculate_score" method="POST">
 
@@ -23,7 +25,7 @@ There are two main variables at play in this template:
     <div class="accordion" id="{{ques_number[jsonr.index(question) + 1]}}">    
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
+                <button class="accordion-button d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
                     {{(jsonr.index(question)) + 1}} - {{question['question']}}
                 </button>
             </h2>
@@ -36,7 +38,7 @@ There are two main variables at play in this template:
                             {% if answer != None %}
 
                                 <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}" value="{{answer}}" autocomplete="off" checked>
-                                <label class="btn btn-outline-success" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}">{{answer}}</label>
+                                <label class="btn btn-outline-success d-block text-center" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}">{{answer}}</label>
 
                             {% endif %}
 

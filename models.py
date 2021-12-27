@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
+API_KEY = "eUGtjE480cql4ZM39Ftz59nKsK6M3diNdmA5EC6Z"
+
 bcrypt = Bcrypt()
 db = SQLAlchemy()
 
@@ -17,25 +19,22 @@ class User(db.Model):
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(30), nullable=False)
     password = db.Column(db.Text, nullable=False)
-    api_key = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
         """Determines how an instance of the User model is shown"""
         return f"<User #{self.id}: {self.username}>"
     
     @classmethod
-    def signup(cls, username, password, api_key):
+    def signup(cls, username, password):
         """Sign up user. Hashes password and adds user to system"""
 
         hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
 
         user = User(
             username=username,
-            password=hashed_pwd,
-            api_key=api_key
+            password=hashed_pwd
         )
 
-        db.session.add(user)
         return user
 
     @classmethod

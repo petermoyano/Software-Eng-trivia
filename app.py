@@ -8,9 +8,13 @@ from models import connect_db, User, db
 from forms import NewUserForm, LoginForm, RequestQuizForm
 from sqlalchemy.exc import IntegrityError
 from functions import ques_number, analize_answers, give_score
+from models import API_KEY
+
 
 CURR_USER_KEY = "curr_user"
 BASE_URL = "https://quizapi.io/api/v1/questions" #This is the sole endpoint available for now
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = (os.environ.get('DATABASE_URL', 'postgresql:///caps1_db'))
@@ -30,10 +34,11 @@ bcrypt=Bcrypt()
 
 @app.before_request
 def add_user_to_g():
-    """If we're logged in so our user is in the session, add the currnt user to Flask global."""
+    """If we're logged in add the current user to Flask global,so our user is in the session"""
 
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
+        g.user.api_key = API_KEY
     else:
         g.user = None
 
@@ -68,14 +73,14 @@ def sign_up():
     form= NewUserForm()
     if form.validate_on_submit():
         try:
-            user = User(
-            username = form.username.data,
-            password = form.password.data,
-            api_key = form.api_key.data)
-
+            username = form.username.data
+            password = form.password.data
+            user = User.signup(username, password)
+            db.session.add(user)
             db.session.commit()
-            flash("Your user has been created!")
-
+            flash(f"Thanks for signing up!, {user.username}. You can now take a quiz!")
+            do_login(user)
+            return redirect(f"/users/{user.id}")
         except IntegrityError:
             flash("Username already taken", 'danger')
             return render_template('users/signup.html', form=form)
