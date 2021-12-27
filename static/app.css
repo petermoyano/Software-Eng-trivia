@@ -5,12 +5,20 @@
 h1, p{
   color: rgba(68, 166, 179, 0.596)
 }
+
+.scrollable{
+  background-color: deepskyblue;
+  overflow:auto;
+}
 /* CSS necessary for background animation
  */
-
+.toggles{
+  display: none;
+}
 
 html {
     height: 100%;
+    background-color: linear-gradient(to bottom, #202020, #111119);
   }
   
   body {
@@ -18,6 +26,7 @@ html {
     margin: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #202020, #111119);
+    overflow:auto;
   }
   
   .rain {

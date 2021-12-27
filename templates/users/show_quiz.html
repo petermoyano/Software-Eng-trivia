@@ -18,7 +18,7 @@ There are two main variables at play in this template:
  <h1>Quiz page.</h1>
  <h2>Once you submit your answers, we'll show you how you did, and all correct answers</h2>
 
-<form action="/users/{{g.user.id}}/calculate_score" method="POST">
+<form action="/users/{{g.user.id}}/calculate_score" method="POST" class="scrollable">
 
     {% for question in jsonr %}
 
