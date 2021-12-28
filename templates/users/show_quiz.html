@@ -22,7 +22,7 @@ There are two main variables at play in this template:
 
     {% for question in jsonr %}
 
-    <div class="accordion" id="{{ques_number[jsonr.index(question) + 1]}}">    
+    <div class="accordion m-2" id="{{ques_number[jsonr.index(question) + 1]}}">    
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
                 <button class="accordion-button d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
@@ -31,15 +31,15 @@ There are two main variables at play in this template:
             </h2>
             <div id="collapse{{ques_number[jsonr.index(question) + 1]}}" class="accordion-collapse collapse" aria-labelledby="heading{{ques_number[jsonr.index(question) + 1]}}">
                 <div class="accordion-body">
-                    <div class="btn-group-vertical" name= "{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons" role="group" aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
+                    <div class="btn-group-vertical d-flex justify-content-center m-2" name= "{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons" role="group" aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
                         
                         {% for answer in iter_base[jsonr.index(question)] %} 
 
                             {% if answer != None %}
-
-                                <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}" value="{{answer}}" autocomplete="off" checked>
-                                <label class="btn btn-outline-success d-block text-center" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}">{{answer}}</label>
-
+                                <div class="container-fluid">
+                                    <input type="radio" class="btn-check text-center" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}" value="{{answer}}" autocomplete="off" checked>
+                                    <label class="btn btn-outline-success d-block text-center" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer)}}">{{answer}}</label>
+                                </div>
                             {% endif %}
 
                         {% endfor %}
@@ -52,7 +52,7 @@ There are two main variables at play in this template:
 
     {% endfor %}
 
-    <button type="submit" class="btn btn-success"> Let's see how I did! </button>
+    <button type="submit" class="btn btn-outline-warning d-grid gap-2 col-4 mx-auto m-4"> Let's see how I did! </button>
 </form>
 
 

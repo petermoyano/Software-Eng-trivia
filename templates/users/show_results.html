@@ -1,56 +1,77 @@
 {% extends "base.html"%}
 
-{% block title%}Your quiz results!{% endblock %}
+<!-- userReponses wich is a python list, gets turned to JSON and the reformated as a JavaScript array -->
+{% block head %}<script>let userResponses = JSON.parse('{{user_responses|tojson|safe}}')</script>{% endblock %}
+
+{% block title %}Your quiz results!{% endblock %}
 
 {% block content %}
-<!-- 
-jsonr is the entire response sent by the API.
+    <!-- jsonr is the entire response sent by the API.
 
-iter_base is a list of lists, where each (list) element holds all possible answers for a specific question
-iter_base -> [['foo', 'bar', 'baz foo'], ['foo bar', ... , ], [..., , ,] ...]
+    iter_base is a list of lists, where each (list) element holds all possible answers for a specific question
+    iter_base -> [['foo', 'bar', 'baz foo'], ['foo bar', ... , ], [..., , ,] ...]
 
-ques_number is a dict -> {1: 'One', 2: 'Two', ...}
+    ques_number is a dict -> {1: 'One', 2: 'Two', ...}
 
-There are two main variables at play in this template:
-    ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
-    iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
- -->
-<h1>Well done!</h1>
-<h3>Below you'll see the wrong answers showed in red.</h3>
-{% for question in jsonr %}
+    There are two main variables at play in this template:
+        ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
+        iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
+    -->
+    <h1>Well done!</h1>
+    <h4>Wrong answers showed in <span class="text-danger"><b>red</b></span>, rigth answers in <span class="text-success"><b>green</b></span>.</h3>
 
-    <div class="accordion" id="{{ques_number[jsonr.index(question) + 1]}}">    
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
-                <button class="accordion-button btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
-                    {{(jsonr.index(question)) + 1}} - {{question['question']}}
-                </button>
-            </h2>
-            <div id="collapse{{ques_number[jsonr.index(question) + 1]}}" class="accordion-collapse collapse" aria-labelledby="heading{{ques_number[jsonr.index(question) + 1]}}">
-                <div class="accordion-body">
-                    <div class="btn-group-vertical" name= "{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons" role="group" aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
-                        
-                        {% for (answer_, answer_string) in jsonr[jsonr.index(question)]["answers"].items() if not (answer_string == None) %} 
+    <div class="responses">
+        {% for question in jsonr %}
 
-                            {% if (jsonr[jsonr.index(question)]["correct_answers"][answer_ + "_correct"]) == "true" %}    
+            <div class="accordion m-2" id="{{ques_number[jsonr.index(question) + 1]}}">    
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
+                        <button class="accordion-button btn-primary d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true" aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
+                            {{(jsonr.index(question)) + 1}} - {{question['question']}}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ques_number[jsonr.index(question) + 1]}}" class="accordion-collapse collapse" aria-labelledby="heading{{ques_number[jsonr.index(question) + 1]}}">
+                        <div class="accordion-body">
+                            <div class="btn-group-vertical d-flex justify-content-center m-2" name= "{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons" role="group" aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
                                 
-                                <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}" value="{{answer_string}}" autocomplete="off" checked>
-                                <label class="btn btn-success" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">{{answer_string}}</label>
+                                {% for (answer_, answer_string) in jsonr[jsonr.index(question)]["answers"].items() if not (answer_string == None) %} 
 
-                            {% else %}
+                                    {% if (jsonr[jsonr.index(question)]["correct_answers"][answer_ + "_correct"]) == "true" %}    
+                                        
+                                        <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}" value="{{answer_string}}" autocomplete="off" checked>
+                                        <label class="btn btn-success" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
+                                            {% if answer_string == user_responses[jsonr.index(question)] %}
+                                            <span class="badge rounded-pill bg-dark text-success"> <i class="fas fa-check-circle"> </i> Correct </span>  {{answer_string}}
+                                            {% else %}
+                                            {{answer_string}}
+                                            {% endif %}
+                                        </label>
+                                            
 
-                                <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}" value="{{answer_string}}" autocomplete="off" checked>
-                                <label class="btn btn-danger" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">{{answer_string}}</label>
+                                    {% else %}
 
-                            {% endif %}
+                                        <input type="radio" class="btn-check" name="input-group {{ques_number[jsonr.index(question) + 1]}}" id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}" value="{{answer_string}}" autocomplete="off" checked>
+                                        <label class="btn btn-danger" for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
+                                            {% if answer_string == user_responses[jsonr.index(question)] %}
+                                            <span class="badge rounded-pill bg-dark text-danger"><i class="fas fa-times-circle"> </i> Wrong </span>  {{answer_string}}
+                                            {% else %}
+                                            {{answer_string}}
+                                            {% endif %}
+                                        </label>
+                                        
+                                            
 
-                        {% endfor %}
+                                    {% endif %}
 
+                                {% endfor %}
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
-{% endfor %}
-
+    
 {% endblock %}
+

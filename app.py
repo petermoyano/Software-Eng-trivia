@@ -178,8 +178,17 @@ def show_quiz_results(user_id):
     return render_template("/users/show_results.html", jsonr=jsonr, ques_number=ques_number, iter_base=iter_base, score=score, user_responses=user_responses)
 
     
+##############################################################################
+# Nav routes:
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
+@app.route('/api')
+def api():
+    return render_template("api.html")
 
-    
-
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
         

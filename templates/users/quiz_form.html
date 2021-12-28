@@ -3,8 +3,9 @@
 {% block title%}Create your quiz!{% endblock%}
 
 {% block content %}
-<h1>Welcome {{g.user.username}}, Select your quiz parameters!</h1>
+<h1>Welcome <b>{{g.user.username}}</b>, Select your quiz parameters!</h1>
 <br>
+<div class="quiz_form">
 <form action="" method="POST">
     {{form.hidden_tag()}}
     {% for field in form if field.widget.input_type != 'hidden'%}
@@ -17,7 +18,9 @@
         {% endfor %}
     </p>
     {%endfor%}
-    <button type="submit"> Show me a quiz </button>
+    <div class="d-grid gap-2 col-4 mx-auto">
+    <button class="btn btn-outline-warning"type="submit"> Show me a quiz </button>
+    </div>
 </form>
-
+</div>
 {% endblock%}

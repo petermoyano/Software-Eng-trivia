@@ -1,3 +1,6 @@
+$('p select').addClass("form-select m-3 bg-secondary")
+
+
 console.log("test")
 var makeItRain = function() {
     //clear out everything

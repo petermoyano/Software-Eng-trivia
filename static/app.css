@@ -2,20 +2,22 @@
 ::selection {
   background: #e2e07d7c; /* WebKit/Blink Browsers */
 }
-h1, p{
-  color: rgba(68, 166, 179, 0.596)
-}
 
 .scrollable{
-  background-color: deepskyblue;
   overflow:auto;
+}
+
+.quiz_form p{
+  padding: .5em;
 }
 /* CSS necessary for background animation
  */
 .toggles{
   display: none;
 }
-
+.form-select{
+  color:#00bc8c
+}
 html {
     height: 100%;
     background-color: linear-gradient(to bottom, #202020, #111119);
