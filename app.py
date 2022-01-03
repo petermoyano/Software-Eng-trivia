@@ -7,7 +7,7 @@ from models import connect_db, User, db
 #from secrets import secret_key
 from forms import NewUserForm, LoginForm, RequestQuizForm
 from sqlalchemy.exc import IntegrityError
-from functions import ques_number, analize_answers, give_score
+from helpers import ques_number, analize_answers, give_score
 from models import API_KEY
 
 

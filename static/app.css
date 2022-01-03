@@ -1,34 +1,66 @@
 
 ::selection {
-  background: #e2e07d7c; /* WebKit/Blink Browsers */
+  background: #e0dd2cf3; /* WebKit/Blink Browsers */
 }
 
-.scrollable{
-  overflow:auto;
-}
 
+body{
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+}
+footer{
+  position: relative;
+  width: 100%;
+  bottom: -300px
+}
 .quiz_form p{
   padding: .5em;
 }
-/* CSS necessary for background animation
- */
 .toggles{
   display: none;
 }
 .form-select{
-  color:#00bc8c
+  color:#00bc8c;
+  background-color: #202020
 }
+footer{
+  background: linear-gradient(to bottom, #202020,#1e3a31);
+}
+body{
+  height: auto;
+  display: table;
+}
+
+
+/* **********************************scrollbar ***********************************/
+html::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+html::-webkit-scrollbar-thumb {
+  background: #1e3a31;
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+html::-webkit-scrollbar-track {
+  background: linear-gradient(
+90deg,#1e3a31,#1e3a31 1px,#111 0,#111);
+}
+/* ***********************************scrollbar *********************************/
+
+/* *****************************background animation*************************** */
+
 html {
     height: 100%;
-    background-color: linear-gradient(to bottom, #202020, #111119);
+    background-color: linear-gradient(to bottom, #202020, #202020);
   }
   
-  body {
+  .back-row-toggle {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background: linear-gradient(to bottom, #202020, #111119);
-    overflow:auto;
+    background: linear-gradient(to bottom, #202020, #202020);
   }
   
   .rain {
@@ -46,7 +78,7 @@ html {
     opacity: 0.5;
   }
   
-  body.back-row-toggle .rain.back-row {
+  div.back-row-toggle .rain.back-row {
     display: block;
   }
   
@@ -105,7 +137,7 @@ html {
     display: none;
   }
   
-  body.splat-toggle .splat {
+  div.splat-toggle .splat {
     display: block;
   }
   
@@ -179,10 +211,10 @@ html {
     top: 160px;
   }
   
-  body.single-toggle .drop {
+  div.single-toggle .drop {
     display: none;
   }
   
-  body.single-toggle .drop:nth-child(10) {
+  div.single-toggle .drop:nth-child(10) {
     display: block;
   }
