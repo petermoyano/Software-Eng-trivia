@@ -6,30 +6,30 @@
 
 body{
   position: relative;
-  min-height: 100%;
+  height: auto;
   width: 100%;
 }
 footer{
   position: relative;
   width: 100%;
-  bottom: -300px
+  bottom: -300px;
+  background: linear-gradient(to bottom, #222,#1e3a31);
+  min-height: 15em;
 }
 .quiz_form p{
   padding: .5em;
 }
 .toggles{
+  /* Buttons to manipulate background rain animation */
   display: none;
 }
 .form-select{
   color:#00bc8c;
   background-color: #202020
 }
-footer{
-  background: linear-gradient(to bottom, #202020,#1e3a31);
-}
+
 body{
   height: auto;
-  display: table;
 }
 
 
@@ -61,6 +61,7 @@ html {
     margin: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #202020, #202020);
+    top: -28px;
   }
   
   .rain {
@@ -203,8 +204,6 @@ html {
   
   .back-row-toggle {
     top: 90px;
-    line-height: 12px;
-    padding-top: 14px;
   }
   
   .single-toggle {
