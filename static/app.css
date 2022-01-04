@@ -1,6 +1,6 @@
 
 ::selection {
-  background: #e0dd2cf3; /* WebKit/Blink Browsers */
+  background: #7c029b; /* WebKit/Blink Browsers */
 }
 
 
@@ -12,24 +12,18 @@ body{
 footer{
   position: relative;
   width: 100%;
-  bottom: -300px;
+/*   bottom: -300px; */
   background: linear-gradient(to bottom, #222,#1e3a31);
-  min-height: 15em;
+  min-height: 13em;
 }
-.quiz_form p{
-  padding: .5em;
+
+
+#navmain{
+  color:#00bc8c
 }
 .toggles{
   /* Buttons to manipulate background rain animation */
   display: none;
-}
-.form-select{
-  color:#00bc8c;
-  background-color: #202020
-}
-
-body{
-  height: auto;
 }
 
 

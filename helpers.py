@@ -5,10 +5,13 @@ ques_number = {1:'One', 2:'Two', 3:'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: '
 #   Process answers and show score  ###################################################
 
 def analize_answers(jsonr):
-    """returns a list of lists, by Taking as an input a dictionary with available answers as values, 
-    some of wich can be None and returns a list with the none None answers, to eventually iterate over
-     to provide a dynamic id to the answer
-    """
+    """Returns iter_base wich is a list of lists, where each (list) element holds all possible answers 
+    (as strings)for a specific question, removing in the process None answers.
+
+    iter_base -> [['foo', 'bar', 'baz foo'], ['foo bar', ... , ], [..., , ,] ...]
+    iter_base -> [[Answers for quesition 1], [Answers for quesition 2], [Answers for quesition 3], ...]
+
+    This is done to give the browser a dynamic base to serve as an iterable for rendering all possible answers"""
     iter_base = []
     for dict_quest in jsonr:
         answers = []

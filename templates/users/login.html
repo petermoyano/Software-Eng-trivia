@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1>Login page</h1>
+<h1 class="text-center px-4">Login page</h1>
 <form action="" method="POST">
     {{form.hidden_tag()}}
     {% for field in form if field.widget.input_type != 'hidden'%}

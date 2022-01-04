@@ -3,24 +3,30 @@
 {% block title%}Create your quiz!{% endblock%}
 
 {% block content %}
-<h1>Welcome <b>{{g.user.username}}</b>, Select your quiz parameters!</h1>
+<h1 class="text-center px-4">Welcome <span class= "text-warning"><b>{{g.user.username}}</b></span>, Select your quiz parameters!</h1>
 <br>
-<div class="quiz_form">
-<form action="" method="POST">
-    {{form.hidden_tag()}}
-    {% for field in form if field.widget.input_type != 'hidden'%}
-    <p>
-        {{field.label}}
-        {{field}}
+<div class="container quiz_form justify-content-center">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+            <form class="text-center justify-content-center" action="" method="POST">
+                {{form.hidden_tag()}}
+                {% for field in form if field.widget.input_type != 'hidden'%}
+                <p>
+                    {{field.label}}
+                    {{field}}
 
-        {% for error in field.errors%}
-        {{error}}
-        {% endfor %}
-    </p>
-    {%endfor%}
-    <div class="d-grid gap-2 col-4 mx-auto">
-    <button class="btn btn-outline-warning"type="submit"> Show me a quiz </button>
+                    {% for error in field.errors%}
+                    {{error}}
+                    {% endfor %}
+                </p>
+                {%endfor%}
+                <div class="d-grid gap-2 col-12 col-sm-10 col-md-8 mx-auto">
+                    <button class="btn btn-outline-warning m-5" type="submit"> Show me a quiz already </button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
     </div>
-</form>
 </div>
 {% endblock%}

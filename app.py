@@ -116,7 +116,7 @@ def logout():
     """Handle logout of user."""
 
     do_logout()
-    flash("We are going to miss you! You've succesfully Loged out.")
+    flash("We are going to miss you! You've succesfully Loged out.", 'success')
     return redirect("/login")
 
 ##############################################################################
@@ -139,6 +139,10 @@ def show_and_handle_quiz(user_id):
                     payload[fieldname] = value
         resp = requests.post(BASE_URL, json=payload)
         jsonr = resp.json()
+        """ The following if statement deals with error responses from the QUIZ_API """
+        if 'error' in jsonr:
+            flash('Sorry, the API had an internal error. Please try again.', 'danger')
+            return redirect(f"/users/{g.user.id}")
         session["jsonr"] = jsonr
 
         """ The following is defined to give each radio button a label-input assosiacion with an individual id 

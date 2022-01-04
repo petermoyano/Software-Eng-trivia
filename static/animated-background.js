@@ -1,7 +1,4 @@
-$('p select').addClass("form-select m-3 bg-dark")
 
-
-console.log("test")
 var makeItRain = function() {
     //clear out everything
     $('.rain').empty();

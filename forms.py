@@ -18,14 +18,18 @@ class RequestQuizForm(FlaskForm):
     """Get parameters to create request to API"""
     category = SelectField('Choose your destiny : ', choices=[("linux", "Linux"),
     ("bash", "Bash"),
-    ("uncategorized", "Uncategorized"),
+    ("php", "PHP"),
+    ("html", "HTML"),
+    ("wordpress", "WordPress"),
+    ("laravel", "Laravel"),
+    ("kubernetes", "Kubernetes"),
     ("docker", "Docker"),
-    ("sql","SQL"),
+    ("mysql","MySql"),
     ("cms", "CMS"),
     ("code", "Code"),
     ("devops", "DevOps"),
-    (None, None)])
-    difficulty = SelectField('Choose your pain : ', choices=[("Easy", "Easy"), ("medium", "medium"), ("hard", "hard"), (None, None)])
-    limit=SelectField('Choose the length of your suffering : ', choices=[('1', '1'), ('5', '5'), ('10', '10'), (None, None)])
+    ("", "Uncategorized")])
+    difficulty = SelectField('Choose your pain : ', choices=[("Easy", "Easy"), ("medium", "Medium"), ("hard", "Hard"), ("", "None")])
+    limit=SelectField('Choose the length of your suffering : ', choices=[('1', '1'), ('5', '5'), ('10', '10'), ("", "None")])
 
 
