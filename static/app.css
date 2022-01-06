@@ -1,9 +1,17 @@
 
 ::selection {
-  background: #7c029b; /* WebKit/Blink Browsers */
+  background: #660280a8; /* WebKit/Blink Browsers */
 }
-
-
+.alert{
+  max-width: 70%;
+  margin: 0 auto;
+}
+.list-group-item{
+  background-color: #222 ;
+}
+p label{
+  background-color: #222;
+}
 body{
   position: relative;
   height: auto;

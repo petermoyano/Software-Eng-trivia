@@ -1,11 +1,35 @@
 {% extends "base.html"%}
 {% block title%} API {% endblock%}
-{% block content %}
-<h1 class="text-center px-4">API details</h1>
-<p class="text-center px-4">This site communicates with the <a href="https://quizapi.io/">quizapi.io</a> api wich is a simple REST api that requires an API_KEY to operate.</p>
-<hr>
-<p></p>
+<div class="container">
+    {% block content %}
 
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-xl-8">
+                        <img class="img-fluid" src="/static/images/QuizApi_Logo_white.png" alt="quiz API" srcset="">
+                    </div>
+                    <div class="col-12 col-xl-4 d-flex align-items-center">
+                        <p class="text-center align-bottom">This site communicates with the <a href="https://quizapi.io/">quizapi.io</a> api
+                wich is a
+                simple REST api that requires an API_KEY to operate.</p>
+                    </div>
+                </div>
+            </div>
 
-{% endblock%}
+            
+            <hr>
+            <p>The purpose of this API is to provide a platform for web sites to embed quick quizzes within their
+                websites,
+                thus
+                providing an addittional feature to the user.</p>
+
+            <div class="col"></div>
+        </div>
+        <div class="col"></div>
+
+        {% endblock%}
+    </div>

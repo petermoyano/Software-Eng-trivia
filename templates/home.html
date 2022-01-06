@@ -1,11 +1,45 @@
 {% extends "base.html"%}
 {% block content%}
-    <h1 class="display-1 text-center">Test your SE basic knowledge</h1>
-    <h3>But first you must register a user!</h3>
-    <p>This is a site designed for taking a quick quiz to test your knowledge on many Software Engineering topics.</p>
-    <br>
+<h2 class="text-center m-5"> <span class="text-warning"> Welcome to the rainy app <i
+            class="fas fa-umbrella text-success"></i>!</span></h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <p class="text-center fs-4">The idea here is very <span class=text-success>simple</span>: It's raining
+                outside and you are kind of <span class="text-danger">bored</span>, so
+                you'll have a go at some quizes related to Software Engineering, just to see if you still got it.</p>
+            <hr>
+            <p class="text-center fs-4"> To check out our questions you just need to <a href="/login"
+                    class="text-decoration-none"><span class=text-success>log in</span></a> or <a href="/register"
+                    class="text-decoration-none"><span class=text-warning>register</span></a>. Don't worry registration
+                only takes a username and a password(just let the browser give you one automatically), we won't ask for
+                your e-mail or anything like that.</p>
+            <hr>
+            <p class="text-center fs-4">Available topics are:</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <ul class="list-group list-group-flush col-4">
+                        <li class="list-group-item text-center fs-5">Linux</li>
+                        <li class="list-group-item text-center fs-5">Docker</li>
+                        <li class="list-group-item text-center fs-5">SQL</li>
+                        <li class="list-group-item text-center fs-5">CMS</li>
+                        <li class="list-group-item text-center fs-5">Coding in general</li>
+                        <li class="list-group-item text-center fs-5">DevOps</li>
+                        <li class="list-group-item text-center fs-5">Many more!</li>
+                    </ul>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
 
 
 {% endblock %}
-    
-

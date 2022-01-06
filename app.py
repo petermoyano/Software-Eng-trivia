@@ -57,10 +57,23 @@ def do_logout():
 ##############################################################################
 # User signup/login/logout
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
     """Show home page"""
-    return render_template("home.html")
+    form = LoginForm()
+    if form.validate_on_submit():
+        print(bcrypt.generate_password_hash(form.password.data).decode('UTF-8'))
+        user = User.authenticate(form.username.data,
+                                 form.password.data)
+
+        if user:
+            do_login(user)
+            flash(f"Hello, {user.username}!", "success")
+            return redirect(f"/users/{user.id}")
+
+        flash("Invalid credentials.", 'danger')
+    
+    return render_template("home.html", form=form)
 
 @app.route("/register", methods=["GET", "POST"])
 def sign_up():

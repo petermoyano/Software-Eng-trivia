@@ -4,20 +4,31 @@
 
 {% block content%}
 <h1 class="text-center px-4">Register page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-4">
 
-<form action="" method="POST">
-    {{form.hidden_tag()}}
-    {% for field in form if field.widget.input_type != 'hidden'%}
-    <p>
-        {{field.label}}
-        {{field}}
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                {% for field in form if field.widget.input_type != 'hidden'%}
+                <p>
+                    {{field.label}}
+                    {{field}}
 
-        {% for error in field.errors%}
-        {{error}}
-        {% endfor %}
-    </p>
-    {%endfor%}
-    <button type="submit" class="btn btn-secondary"> Register </button>
+                    {% for error in field.errors%}
+                    {{error}}
+                    {% endfor %}
+                </p>
+                {%endfor%}
+                <div class="d-grid gap-2 col-12 col-sm-10 col-md-8 mx-auto">
+                    <button class="btn btn-outline-warning m-5" type="submit"> Show me a quiz already </button>
+                </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
 </form>
 
 
