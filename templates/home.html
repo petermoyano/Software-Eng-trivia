@@ -30,7 +30,21 @@
                         <li class="list-group-item text-center fs-5">Coding in general</li>
                         <li class="list-group-item text-center fs-5">DevOps</li>
                         <li class="list-group-item text-center fs-5">Many more!</li>
+                        <form class="text-center" action="" method="POST">
+                            {{form.hidden_tag()}}
+                            {% for field in form if field.widget.input_type != 'hidden'%}
+                            <p class="stranger d-none">
+                                {{field.label}}
+                                {{field}}
+
+                            </p>
+                            {%endfor%}
+                            <div class="">
+                                <button class="btn btn-outline-warning my-5" type="submit"> Play around with it </button>
+                            </div>
+                        </form>
                     </ul>
+
                     <div class="col"></div>
                 </div>
             </div>

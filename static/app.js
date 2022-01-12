@@ -2,7 +2,7 @@ const allFlashes = document.getElementsByClassName('alert')
 
 $('p select').addClass("form-select text-center m-3 p-2 text-warning bg-dark");
 $('form p label').addClass("col-12 col-form-label text-center my-4 p-2 text-warning");
-$('form p input').addClass("col-8 form-control text-center bg-dark");
+$('form p input').addClass("col-8 form-control text-center bg-dark text-info");
 
 
 /* btnForFlashes adds the necesary html markup to make the flashes dynamically generated in the back end,

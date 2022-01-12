@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.fields.choices import SelectField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired
+from wtforms.widgets import PasswordInput
 
 class NewUserForm(FlaskForm):
     """New User form"""
@@ -12,7 +13,7 @@ class NewUserForm(FlaskForm):
 class LoginForm(FlaskForm):
     """Login form."""
     username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', widget=PasswordInput(hide_value=False), validators=[DataRequired()])
 
 class RequestQuizForm(FlaskForm):
     """Get parameters to create request to API"""

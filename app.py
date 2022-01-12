@@ -60,17 +60,11 @@ def do_logout():
 @app.route("/", methods=["GET", "POST"])
 def home():
     """Show home page"""
-    form = LoginForm()
+    stranger=User.query.get_or_404(1)
+    form = LoginForm(obj=stranger)
     if form.validate_on_submit():
-        print(bcrypt.generate_password_hash(form.password.data).decode('UTF-8'))
-        user = User.authenticate(form.username.data,
-                                 form.password.data)
-
-        if user:
-            do_login(user)
-            return redirect(f"/users/{user.id}")
-
-        flash("Invalid credentials.", 'danger')
+        do_login(stranger)
+        return redirect(f"/users/{stranger.id}")
     
     return render_template("home.html", form=form)
 
@@ -97,9 +91,6 @@ def sign_up():
             flash("Username already taken", 'warning')
             return render_template('users/signup.html', form=form)
             
-        do_login(user) #adds the user id to the session
-
-        return redirect("/")
     else:
         return render_template("users/signup.html", form=form)
 
