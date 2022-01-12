@@ -1,9 +1,33 @@
 {% extends "base.html"%}
 {% block title%} API {% endblock%}
 {% block content %}
-<h1> Contact us!</h1>
-<p>We would higly appreciate if you could give us some feedback!</p>
+<div class="container">
+    <div class="row">
+        <h1 class="text-center col-12 m-4"> Contact me!</h1>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <div class="row">
 
 
-
+                <div class="text-center col-12 col-md-4"><img class="img-thumbnail bg-secondary rounded my-3"
+                        src="/static/images/dev.png" alt="" srcset=""></div>
+                <p class="text-center col-12 col-md-8 d-flex align-items-center">I'm Pedro Moyano, Electromechanical
+                    Engineer. In 2021 I decided to switch
+                    careers to Software Engineering because
+                    this coding stuff is just to much fun! </p>
+            </div>
+            <hr>
+            <p class="text-center">As of January 2022 I'm a few months away from completing the Software Engineering
+                career Track with <span class="text-success">Springboard</span>,
+                where we cover the full stack with both <span class="text-info">Python</span> and <span
+                    class="text-warning">JavaScript</span>, reviewing the most commonly user libraries and
+                frameworks. (React, Node, Express, Flask, etc.)</p>
+            <hr>
+            <p class="text-center">Critiques are higly appreciated. Specially if you are a developer!</p>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
 {% endblock%}

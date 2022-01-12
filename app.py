@@ -34,7 +34,7 @@ bcrypt=Bcrypt()
 
 @app.before_request
 def add_user_to_g():
-    """If we're logged in add the current user to Flask global,so our user is in the session"""
+    """If we're logged in, add the current user to Flask global, so our user is in the session"""
 
     if CURR_USER_KEY in session:
         g.user = User.query.get(session[CURR_USER_KEY])
@@ -68,7 +68,6 @@ def home():
 
         if user:
             do_login(user)
-            flash(f"Hello, {user.username}!", "success")
             return redirect(f"/users/{user.id}")
 
         flash("Invalid credentials.", 'danger')
@@ -91,11 +90,11 @@ def sign_up():
             user = User.signup(username, password)
             db.session.add(user)
             db.session.commit()
-            flash(f"Thanks for signing up!, {user.username}. You can now take a quiz!")
+            flash(f"Thanks for signing up!, {user.username}. You can now take a quiz!", "success")
             do_login(user)
             return redirect(f"/users/{user.id}")
         except IntegrityError:
-            flash("Username already taken", 'danger')
+            flash("Username already taken", 'warning')
             return render_template('users/signup.html', form=form)
             
         do_login(user) #adds the user id to the session
@@ -110,7 +109,6 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
-        print(bcrypt.generate_password_hash(form.password.data).decode('UTF-8'))
         user = User.authenticate(form.username.data,
                                  form.password.data)
 
@@ -181,8 +179,6 @@ def handle_quiz_results(user_id):
 
     score = give_score(jsonr, user_responses)
     session["score"] = score
-
-    flash(f"Your score was {score}%!")
 
     return redirect(f"/users/{g.user.id}/show_results")
 

@@ -1,48 +1,70 @@
 {% extends "base.html"%}
 {% block title%} About {% endblock%}
 {% block content %}
-<h1 class="text-center px-4">About this page <i class="fas fa-umbrella"></i></h1>
-<p class="text-center px-4">Ok full disclosure, I just wanted to play around with some cards so here is every piece of tech I used for this site.
+<h1 class="text-center px-4">About this page <span class="text-success"><i class="fas fa-umbrella"></i></span></h1>
+<p class="text-center m-4">Ok full disclosure, I just wanted to play around with some cards so here is every piece of
+    tech I used for this site.
 </p>
-<hr>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <hr class="col-10">
+        <div class="col"></div>
+    </div>
+</div>
+
 
 <div class="container m-6">
     <div class="row row-cols-auto m-2 mt-4">
         <div class="card-group ">
             <div class="col-md-6 col-lg-4 d-flex">
-                <div class="card m-2">
+                <div class="card border-light m-2">
                     <img src="/static/images/js_logo_icon_145146.png" class="card-img-top" alt="JavaScript logo">
-                    <div class="card-body">
+                    <div class="card-body d-flex align-items-start row">
                         <h4 class="card-title text-center">JavaScript</h6>
-                        <hr>
-                        <p class="card-text text-center lh-base">When someone asks you -"Which programming language should I learn first?"
-                            Answer them by asking -"What are you interested in?"<br>
-                            Front-end? -JavaScript. <br>
-                            Back-end? -JavaScript. <br>
-                            Mobile apps? -JavaScript. <br>
-                            Games? -JavaScript. <br>
-                            AI? -JavaScript. <br></p>
+                            <hr>
+                            <p class="card-text text-center lh-base">When someone asks you -"Which programming language
+                                should I learn first?"
+                                Answer them by asking -"What are you interested in?"<br>
+                                Front-end? -JavaScript. <br>
+                                Back-end? -JavaScript. <br>
+                                Mobile apps? -JavaScript. <br>
+                                Games? -JavaScript. <br>
+                                AI? -JavaScript. <br></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 d-flex">
-                <div class="card m-2">
+                <div class="card border-light m-2">
                     <img src="/static/images/Python_icon-icons.com_68975.png" class="card-img-top p-4" alt="Python">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Python</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">A programmer is a machine that turns coffe into code.</p>
+                    <div class="card-body d-flex align-items-start row d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Python
+                            <hr>
+                        </h4>
+
+                        <div class="justify-content-center">
+                            <p class="card-text text-center lh-base">A programmer is a machine
+                                that turns coffee into code. </p> <br>
+                            <div class="text-center"><i class="fas fa-coffee mx-3 text-danger fs-3"></i><i
+                                    class="fas fa-equals mx-3 text-info fs-3"></i><i
+                                    class="fas fa-file-code mx-3 text-warning fs-3"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="card m-2">
-                    <img src="/static/images/stack_overflow_icon_153499.png" class="card-img-top" alt="Stack Overflow">
-                    <div class="card-body">
-                        <h4 class="card-title d-flex justify-content-center align-items-start">Stack Overflow</h4>
-                        <hr>
-                        <p class="card-text lh-base d-flex align-items-center">I know, kind of weird to put this in here, but honestly this tool has saved
-                            me so many times, and I've learned so much from it, that I figured this totally belongs here.</p>   
+            <div class="col-md-12 col-lg-4 d-flex justify-content-center">
+                <div class="card border-light m-2">
+                    <img src="/static/images/stack_overflow_icon_153499.png" class="card-img-top p-md-5 p-lg-0" alt="Stack Overflow">
+                    <div class="card-body d-flex align-items-start row d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Stack Overflow
+                            <hr>
+                        </h4>
+
+                        <p class="card-text lh-base text-center">I know, kind of weird to put this in
+                            here, but honestly this tool has saved
+                            me so many times, and I've learned so much from it, that I figured this totally belongs
+                            here.</p>
                     </div>
                 </div>
             </div>
@@ -50,45 +72,48 @@
     </div>
     <div class="row row-cols-auto m-2">
         <div class="card-group">
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
-                <div class="card m-2">
+            <div class="col-sm-6  col-lg-3 d-flex">
+                <div class="card border-light m-2">
                     <img src="/static/images/prog-flask_icon-icons.com_50797.png" class="card-img-top p-2" alt="Flask">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Flask</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">I must have written flask run 4 million times by now.</p>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Flask<hr></h4>
+                        
+                        <p class="card-text text-center lh-base">I must have written flask run 4 million times by now.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
-                <div class="card m-2">
+            <div class="col-sm-6 col-lg-3 d-flex">
+                <div class="card border-light m-2">
                     <img src="/static/images/bootstrap_icon_195906.png" class="card-img-top p-2" alt="Bootstrap 5">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Bootstrap 5</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">Let us gather together in pray, and thank the lord for this tool! <br> Thank you, Jesus!</p>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Bootstrap 5<hr></h4>
+                        
+                        <p class="card-text text-center lh-base">Let us gather together in pray, and thank the lord for
+                            this tool! <br> Thank you, Jesus!</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
-                <div class="card m-2">
+            <div class="col-sm-6 col-lg-3 d-flex">
+                <div class="card border-light m-2">
                     <img src="/static/images/sqla_logo.png" class="card-img-top p-2" alt="SQLA">
                     <img src="/static/images/4691328_postgresql_icon.png" class="p-2" alt="postgresql" srcset="">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">SQLAlchemy and postgresql</h4>
-                        <hr>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">SQLAlchemy and postgresql<hr></h4>
+                        
                         <p class="card-text text-center lh-base">What is the most used language in programming? <br>
                             Profanity.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
-                <div class="card m-2">
+            <div class="col-sm-6 col-lg-3 d-flex">
+                <div class="card border-light m-2">
                     <img src="/static/images/jq.png" class="" alt="jquery" srcset="">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">jQuery</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">I don't know any React yet, what do you want from me? Give me a couple of months, I'll get there.</p>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">jQuery<hr></h4>
+                        
+                        <p class="card-text text-center lh-base">I don't know any React yet, what do you want from me?
+                            Give me a couple of months, I'll get there.</p>
                     </div>
                 </div>
             </div>
@@ -97,38 +122,40 @@
     <div class="row row-cols-auto m-2">
         <div class="card-group">
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
-                <div class="card m-2">
+                <div class="card border-light m-2">
                     <div class="row">
                         <img src="/static/images/social_html5_html_71.png" class="col-6 pt-2 " alt="bootstrap"
                             srcset="">
                         <img src="/static/images/css3-01_icon-icons.com_50918.png" class="col-6 pt-2 " alt="bootstrap"
                             srcset="">
                     </div>
-                    <div class="card-body">
-                        <h4 class="card-title text-center">HTML and CSS</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base"> -"Hello Mr Programmer", the donkey said, -"how are you?". <br>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">HTML and CSS<hr></h4>
+                        
+                        <p class="card-text text-center lh-base"> - "Hello Mr Programmer", the donkey said, -"how are
+                            you?". <br>
 
-                            -"mighty fine, thank you donkey", the HTML dev replied <br>
-                            
+                            - "Mighty fine, thank you donkey", the <span class="text-info">HTML dev </span>replied <br>
+
                             Immediately the donkey started crying. <br>
-                            
-                            -"What's the matter little friend?" the HTML dev asked. <br>
-                            
-                            -"I called you a programmer, at least you could call me horse"</p>
+
+                            - "What's the matter little friend?" the <span class="text-info">HTML dev </span>asked. <br>
+
+                            - "I called you a programmer, at least you could call me horse"</p>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
-                <div class="card m-2">
+                <div class="card border-light m-2">
                     <div class="row">
                         <img src="/static/images/GitHub.png" class="col-6 p-3" alt="GitHuub" srcset="">
                         <img src="/static/images/pngegg.png" class="col-6 p-3" alt="Git" srcset="">
                     </div>
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Git and GitHub</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base"></p>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Git and GitHub<hr></h4>
+                        
+                        <p class="card-text text-center lh-base"> Commit early, commit often. A tip for version
+                            controlling - not for relationships</p>
                     </div>
                 </div>
             </div>
@@ -136,50 +163,49 @@
     </div>
     <div class="row row-cols-auto m-2">
         <div class="card-group">
-            <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
-                <div class="card m-2">
-                    <img src="/static/images/font_awesome_icon_135599.png" alt="FontAwesome" srcset="">
-                    <div class="card-body text-center">
-                        <h4 class="card-title text-center">FontAwesome</h4>
-                        <hr>
-                        <p class="card-text lh-base">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+            <div class="col-sm-6 col-xl-3 d-flex">
+                <div class="card border-light m-2">
+                    <img src="/static/images/font_awesome_icon_135599.png" alt="FontAwesome" class="p-4 p-sm-2 p-md-4 p-lg-5 p-xl-1" srcset="">
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">FontAwesome<hr></h4>
+                        
+                        <p class="card-text lh-base">Yeah, this whole row is just me scrapping the bottom of the barrel
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-2 d-flex">
-                <div class="card m-2">
-                    <img src="/static/images/WTF.png" class="pt-4 pb-4" alt="WTForms" srcset="">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">WTForms</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+            <div class="col-sm-6 col-xl-3 d-flex">
+                <div class="card border-light m-2">
+                    <img src="/static/images/WTF.png" class="rounded my-4 p-1 p-lg-3 p-xl-1" alt="WTForms" srcset="">
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">WTForms<hr></h4>
+                        
+                        <p class="card-text text-center lh-base">Hardware is the part of a computer you can kick.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-2 d-flex">
-                <div class="card m-2">
-                    <img src="/static/images/vscode_icon_131899.png" alt="vscode" class="p-2" srcset="">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">VSCode</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+            <div class="col-sm-6 col-xl-2 d-flex">
+                <div class="card border-light m-2">
+                    <img src="/static/images/vscode_icon_131899.png" alt="vscode" class="p-4 p-md-5 p-lg-5 p-xl-2" srcset="">
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">VSCode<hr></h4>
+                        
+                        <p class="card-text text-center lh-base">Favorite color theme: Kimbie Dark, but I changed the
+                            color of variables to <span class="text-info">light blue</span>.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-5 d-flex">
-                <div class="card m-2">
+            <div class="col-sm-6 col-xl-4 d-flex">
+                <div class="card border-light m-2">
                     <div class="row">
                         <img src="/static/images/ubuntu.png" alt="ubuntu" class="col-6 p-3" srcset="">
                         <img src="/static/images/w.png" alt="windows" class="col-6 p-4" srcset="">
                     </div>
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Windows Subsystem for Linux - Ubuntu</h4>
-                        <hr>
-                        <p class="card-text text-center lh-base">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                    <div class="card-body d-flex align-items-start row">
+                        <h4 class="card-title text-center col-12">Windows Subsystem for Linux - Ubuntu<hr></h4>
+                        
+                        <p class="card-text text-center lh-base"> How did the programmer die in the shower?
+                            He read the shampoo bottle instructions: Lather. Rinse. Repeat.</p>
                     </div>
                 </div>
             </div>

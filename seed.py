@@ -10,13 +10,13 @@ db.drop_all()
 db.create_all()
 
 def seed_users():
-    user1 = User(username="user1", 
-        password= bcrypt.generate_password_hash("user1").decode('UTF-8')) 
+    test_user = User(username="test_user", 
+        password= bcrypt.generate_password_hash("test_user").decode('UTF-8')) 
 
     user2 = User(username="user2", 
         password= bcrypt.generate_password_hash("user2").decode('UTF-8'))
 
-    db.session.add(user1)
+    db.session.add(test_user)
     db.session.add(user2)
     db.session.commit()
 seed_users()

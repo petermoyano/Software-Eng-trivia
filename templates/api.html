@@ -9,23 +9,30 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-xl-8">
-                        <img class="img-fluid" src="/static/images/QuizApi_Logo_white.png" alt="quiz API" srcset="">
+                    <div id="quizApi" class="col-12 col-xl-8">
+                        <img id="quizApiImg" class="img-fluid" src="/static/images/QuizApi_Logo_white.png" alt="quiz API" srcset="" onclick="window.location='https://quizapi.io/'">
                     </div>
                     <div class="col-12 col-xl-4 d-flex align-items-center">
-                        <p class="text-center align-bottom">This site communicates with the <a href="https://quizapi.io/">quizapi.io</a> api
-                wich is a
-                simple REST api that requires an API_KEY to operate.</p>
+                        <p class="text-center align-bottom">This site communicates with the <a
+                                href="https://quizapi.io/">quizapi.io</a> api
+                            wich is a
+                            simple REST api that requires an API_KEY to operate.</p>
                     </div>
                 </div>
             </div>
 
-            
+
             <hr>
             <p>The purpose of this API is to provide a platform for web sites to embed quick quizzes within their
                 websites,
                 thus
                 providing an addittional feature to the user.</p>
+            <hr>
+            <p> When a user submits the parameters of the quiz he or she wants to take, Python's requests built in library makes a GET
+                request to the QuizAPI with the API_key for authentication. Once the JSON response is recieved,
+                the quiz is rendered to the user. All addittional functionality, like checking for right answers and
+                show how the user did is done in the back-end through Python and Jinja.
+            </p>
 
             <div class="col"></div>
         </div>

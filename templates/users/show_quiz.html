@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 
-{% block title%}This is your quiz!{% endblock %}
+{% block title%}The rainy app!{% endblock %}
 
 {% block content %}
 
@@ -16,10 +16,11 @@ There are two main variables at play in this template:
     ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
     iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
  -->
-<h1 class="text-center px-4">Quiz page.</h1>
-<h2 class="text-center px-4">Once you submit your answers, we'll show you how you did, and all correct answers</h2>
+<h1 class="text-center m-4"><i class="fas fa-umbrella text-success mx-4"></i> It's raining <i
+        class="fas fa-umbrella text-success mx-4"></i></h1>
 
-<form action="/users/{{g.user.id}}/calculate_score" method="POST" class="scrollable d-flex justify-content-center">
+
+<form action="/users/{{g.user.id}}/calculate_score" method="POST" class="scrollable d-flex justify-content-center m-3">
     <div class="container justify-content-center">
         <div class="row">
             <div class="col"></div>

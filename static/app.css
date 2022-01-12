@@ -1,6 +1,7 @@
 
 ::selection {
   background: #660280a8; /* WebKit/Blink Browsers */
+  color:#2dcca4
 }
 .alert{
   max-width: 70%;
@@ -16,6 +17,7 @@ body{
   position: relative;
   height: auto;
   width: 100%;
+  min-width: 400px;
 }
 footer{
   position: relative;
@@ -25,15 +27,25 @@ footer{
   min-height: 13em;
 }
 
+#quizApiImg:hover{
+  cursor: pointer;
+}
 
 #navmain{
-  color:#00bc8c
+  color:#00bc8c;
 }
+
+.user-nav:hover{
+  color: #f39c12 !important ;
+}
+
 .toggles{
   /* Buttons to manipulate background rain animation */
   display: none;
 }
-
+p input{
+  background-color: #222;
+}
 
 /* **********************************scrollbar ***********************************/
 html::-webkit-scrollbar {
@@ -56,6 +68,7 @@ html::-webkit-scrollbar-track {
 html {
     height: 100%;
     background-color: linear-gradient(to bottom, #202020, #202020);
+    min-width: 400px;
   }
   
   .back-row-toggle {

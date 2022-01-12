@@ -31,13 +31,13 @@
         {% if not g.user %}
 
         <li class="nav-item ms-2 me-2">
-          <a class="nav-link link-success" id="navmain" href="/"> <i class="fas fa-umbrella"></i> Home </a>
+          <a class="nav-link link-success user-nav" id="navmain" href="/"> <i class="fas fa-umbrella"></i> Home </a>
         </li>
 
         {% else %}
 
         <li class="nav-item mx-5">
-          <a class="nav-link link-success fs-5" id="navmain" href="/users/{{g.user.id}}"> <i class="fas fa-umbrella"></i>
+          <a class="nav-link link-success fs-5 user-nav" id="navmain" href="/users/{{g.user.id}}"> <i class="fas fa-umbrella"></i>
             Take a quiz</a>
         </li>
 
@@ -57,19 +57,16 @@
           <li class="nav-item ms-2 me-2">
             <a class="nav-link" href="/contact">Contact</a>
           </li>
-          <li class="nav-item ms-2 me-2">
-            <span class="nav-link"> | </span>
-          </li>
           {% if not g.user %}
           <li class="nav-item ms-2 me-2">
-            <a class="nav-link" href="/register">Sign up</a>
+            <a class="nav-link ms-4 ps-4 user-nav text-info" href="/register">Sign up</a>
           </li>
           <li class="nav-item ms-2 me-2">
-            <a class="nav-link" href="/login">Log in</a>
+            <a class="nav-link text-info user-nav" href="/login">Log in</a>
           </li>
           {% else %}
           <li class="nav-item ms-2 me-2">
-            <a class="nav-link" href="/logout">Log out</a>
+            <a class="nav-link user-nav" href="/logout">Log out</a>
           </li>
           {% endif %}
       </ul>
@@ -90,15 +87,14 @@
 
 
     <footer class="bd-footer d-flex flex-wrap justify-content-between align-items-end py-5 mt-5 bg-dark">
-      <div class="col-md-4 d-flex align-items-center ms-3">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"></a>
-        <span class="text-muted"><i class="fas fa-umbrella"></i> 2022 - The rainy app. Not a single right reserved.</span>
+      <div class="col-12 col-md-6 col-lg-4 d-flex align-items-center ms-3">
+        <span class="text-muted m-2"><i class="fas fa-umbrella"></i> 2022 - The rainy app. <br>Not a single right reserved.</span>
       </div>
 
-      <ul class="nav col-md-4 justify-content-center list-unstyled d-flex">
-        <li class="ms-3"><a class="text-muted" href="https://twitter.com/PeterMoyano"><i class="fab fa-twitter"></i></a></li>
-        <li class="ms-3"><a class="text-muted" href="https://www.linkedin.com/in/pedro-moyano"><i class="fab fa-linkedin-in"></i></a></li>
-        <li class="ms-3"><a class="text-muted" href="https://github.com/petermoyano/"><i class="fab fa-github"></i></a></li>
+      <ul class="nav col-12 col-md-4 justify-content-center list-unstyled d-flex">
+        <li class="m-3"><a class="text-muted" href="https://twitter.com/PeterMoyano"><i class="fab fa-twitter"></i></a></li>
+        <li class="m-3"><a class="text-muted" href="https://www.linkedin.com/in/pedro-moyano"><i class="fab fa-linkedin-in"></i></a></li>
+        <li class="m-3"><a class="text-muted" href="https://github.com/petermoyano/Software-Eng-trivia"><i class="fab fa-github"></i></a></li>
       </ul>
     </footer>
 
