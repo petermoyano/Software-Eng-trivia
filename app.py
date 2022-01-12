@@ -9,6 +9,7 @@ from forms import NewUserForm, LoginForm, RequestQuizForm
 from sqlalchemy.exc import IntegrityError
 from helpers import ques_number, analize_answers, give_score
 from models import API_KEY
+import os
 
 
 CURR_USER_KEY = "curr_user"
@@ -20,7 +21,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = (os.environ.get('DATABASE_URL', 'postgresql:///caps1_db'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY'] = "MySecretKeyIsHidden123"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "MySecretKeyIsHidden126543")
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 
