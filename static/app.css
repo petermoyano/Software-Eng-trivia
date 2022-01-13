@@ -17,6 +17,7 @@ body{
   position: relative;
   height: auto;
   width: 100%;
+  overflow-x: hidden;
 }
 footer{
   position: relative;
