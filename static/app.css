@@ -17,7 +17,6 @@ body{
   position: relative;
   height: auto;
   width: 100%;
-  min-width: 320px;
 }
 footer{
   position: relative;
@@ -68,7 +67,6 @@ html::-webkit-scrollbar-track {
 html {
     height: 100%;
     background-color: linear-gradient(to bottom, #202020, #202020);
-    min-width: 400px;
   }
   
   .back-row-toggle {

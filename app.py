@@ -26,7 +26,7 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 
 app.debug = DebugToolbarExtension
-app.debug = True
+app.debug = False
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
