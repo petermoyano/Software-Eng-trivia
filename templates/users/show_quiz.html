@@ -16,7 +16,7 @@ There are two main variables at play in this template:
     ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
     iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
  -->
-<h1 class="text-center m-4"><i class="fas fa-umbrella text-success mx-4"></i> It's raining <i
+<h1 class="text-center my-5"><i class="fas fa-umbrella text-success mx-4"></i> It's raining <i
         class="fas fa-umbrella text-success mx-4"></i></h1>
 
 
@@ -24,7 +24,7 @@ There are two main variables at play in this template:
     <div class="container justify-content-center">
         <div class="row">
             <div class="col"></div>
-            <div class="text-center col-8 justify-content-center">
+            <div class="text-center col-sm-10 col-md-8 justify-content-center">
 
                 {% for question in jsonr %}
 
@@ -67,7 +67,7 @@ There are two main variables at play in this template:
 
                 {% endfor %}
 
-                <button type="submit" class="btn btn-outline-warning d-grid gap-2 col-4 mx-auto m-4"> Let's see how I
+                <button type="submit" class="btn btn-outline-warning my-5"> Let's see how I
                     did!
                 </button>
             </div>

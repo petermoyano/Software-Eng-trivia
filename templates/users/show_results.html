@@ -18,101 +18,112 @@
         ques_number[jsonr.index(question) + 1]   ->   can take values "One", "Two", "Three", from ques_number
         iter_base[jsonr.index(question)]         ->   is a list of all none None answers to the current question. It's in a separate list to be able to iterate through it
     -->
-    {% if score < 30 %}
-    <h1 class="text-center p-3">Come on you can do better than this! your score was <span class="text-danger">{{score}}%</span></h1>
-    {% elif score < 60 %}
-    <h1 class="text-center p-3">You did ok: <span class="text-warning">{{score}}%</span></h1>
-    {% elif score < 90 %}
-    <h1 class="text-center p-3">You did great! Your score was <span class="text-info">{{score}}%</span></h1>
-    {% else %}
-    <h1 class="text-center p-3">Perfection. Your score was <span class="text-success">{{score}}%</span> </h1>
-    {% endif%}
+{% if score < 30 %} <h1 class="text-center p-3">Come on, you can do better than this! your score was <span
+        class="text-danger">{{score}}%</span></h1>
+    {% elif score < 60 %} <h1 class="text-center p-3">You did... ok: <span class="text-warning">{{score}}%</span></h1>
+        {% elif score < 90 %} <h1 class="text-center p-3">You did great! Your score was <span
+                class="text-info">{{score}}%</span></h1>
+            {% else %}
+            <h1 class="text-center p-3">Perfection. Your score was <span class="text-success">{{score}}%</span> </h1>
+            {% endif%}
 
 
-<h3 class="text-center px-4 m-5">Wrong answers showed in <span class="text-danger"><b>red</b></span>, right answers in
-    <span class="text-success"><b>green</b></span>.
-</h3>
-<div class="contaniner justify-content-center my-3">
-    <div class="row">
-        <div class="col"></div>
-        <div class="responses text-center col-8 justify-content-center">
-            {% for question in jsonr %}
+            <h3 class="text-center my-5">Wrong answers showed in <span class="text-danger"><b>red</b></span>, right
+                answers in
+                <span class="text-success"><b>green</b></span>.
+            </h3>
+            <div class="contaniner justify-content-center my-3">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="responses text-center col-sm-10 col-md-8 justify-content-center">
+                        {% for question in jsonr %}
 
-            <div class="accordion m-2" id="{{ques_number[jsonr.index(question) + 1]}}">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
-                        <button class="accordion-button btn-primary d-block text-center" type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}" aria-expanded="true"
-                            aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
-                            {{(jsonr.index(question)) + 1}} - {{question['question']}}
-                        </button>
-                    </h2>
-                    <div id="collapse{{ques_number[jsonr.index(question) + 1]}}" class="accordion-collapse collapse"
-                        aria-labelledby="heading{{ques_number[jsonr.index(question) + 1]}}">
-                        <div class="accordion-body">
-                            <div class="btn-group-vertical d-flex justify-content-center m-2"
-                                name="{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons" role="group"
-                                aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
+                        <div class="accordion m-2" id="{{ques_number[jsonr.index(question) + 1]}}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ques_number[jsonr.index(question) + 1]}}">
+                                    <button class="accordion-button btn-primary d-block text-center" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ques_number[jsonr.index(question) + 1]}}"
+                                        aria-expanded="true"
+                                        aria-controls="collapse{{ques_number[jsonr.index(question) + 1]}}">
+                                        {{(jsonr.index(question)) + 1}} - {{question['question']}}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ques_number[jsonr.index(question) + 1]}}"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="heading{{ques_number[jsonr.index(question) + 1]}}">
+                                    <div class="accordion-body">
+                                        <div class="btn-group-vertical d-flex justify-content-center m-2"
+                                            name="{{ques_number[jsonr.index(question) + 1]}}" data-toggle="buttons"
+                                            role="group"
+                                            aria-label="Button group {{ques_number[jsonr.index(question) + 1]}}">
 
-                                {% for (answer_, answer_string) in jsonr[jsonr.index(question)]["answers"].items()
-                                if not (answer_string == None) %}
+                                            {% for (answer_, answer_string) in
+                                            jsonr[jsonr.index(question)]["answers"].items()
+                                            if not (answer_string == None) %}
 
-                                {% if (jsonr[jsonr.index(question)]["correct_answers"][answer_ + "_correct"]) ==
-                                "true" %}
+                                            {% if (jsonr[jsonr.index(question)]["correct_answers"][answer_ +
+                                            "_correct"]) ==
+                                            "true" %}
 
-                                <input type="radio" class="btn-check"
-                                    name="input-group {{ques_number[jsonr.index(question) + 1]}}"
-                                    id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}"
-                                    value="{{answer_string}}" autocomplete="off" checked>
-                                <label class="btn btn-success"
-                                    for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
-                                    {% if answer_string == user_responses[jsonr.index(question)] %}
-                                    <span class="badge rounded-pill bg-dark text-success"> <i
-                                            class="fas fa-check-circle"> </i> Correct </span> {{answer_string}}
-                                    {% else %}
-                                    {{answer_string}}
-                                    {% endif %}
-                                </label>
-
-
-                                {% else %}
-
-                                <input type="radio" class="btn-check"
-                                    name="input-group {{ques_number[jsonr.index(question) + 1]}}"
-                                    id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}"
-                                    value="{{answer_string}}" autocomplete="off" checked>
-                                <label class="btn btn-danger"
-                                    for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
-                                    {% if answer_string == user_responses[jsonr.index(question)] %}
-                                    <span class="badge rounded-pill bg-dark text-danger"><i class="fas fa-times-circle">
-                                        </i> Wrong </span> {{answer_string}}
-                                    {% else %}
-                                    {{answer_string}}
-                                    {% endif %}
-                                </label>
+                                            <input type="radio" class="btn-check"
+                                                name="input-group {{ques_number[jsonr.index(question) + 1]}}"
+                                                id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}"
+                                                value="{{answer_string}}" autocomplete="off" checked>
+                                            <label class="btn btn-success"
+                                                for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
+                                                {% if answer_string == user_responses[jsonr.index(question)] %}
+                                                <span class="badge rounded-pill bg-dark text-success"> <i
+                                                        class="fas fa-check-circle"> </i> Correct </span>
+                                                {{answer_string}}
+                                                {% else %}
+                                                {{answer_string}}
+                                                {% endif %}
+                                            </label>
 
 
+                                            {% else %}
 
-                                {% endif %}
+                                            <input type="radio" class="btn-check"
+                                                name="input-group {{ques_number[jsonr.index(question) + 1]}}"
+                                                id="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}"
+                                                value="{{answer_string}}" autocomplete="off" checked>
+                                            <label class="btn btn-danger"
+                                                for="{{ques_number[jsonr.index(question) + 1]}} {{iter_base[jsonr.index(question)].index(answer_string)}}">
+                                                {% if answer_string == user_responses[jsonr.index(question)] %}
+                                                <span class="badge rounded-pill bg-dark text-danger"><i
+                                                        class="fas fa-times-circle">
+                                                    </i> Wrong </span> {{answer_string}}
+                                                {% else %}
+                                                {{answer_string}}
+                                                {% endif %}
+                                            </label>
 
-                                {% endfor %}
 
+
+                                            {% endif %}
+
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
+
+                    
+                    <div class="">
+                        <a href=/users/{{g.user.id}} id="quizfinished"
+                            class="btn btn-outline-warning my-5 text-decoration-none"> That was
+                            awesome, let's do
+                            another one! </a>
                     </div>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </div>
-            {% endfor %}
 
-        </div>
 
-        <div class="col"></div>
-    </div>
-</div>
-<div class="d-grid gap-2 col-12 col-sm-10 col-md-8 mx-auto">
-    <a href=/users/{{g.user.id}} id="quizfinished" class="btn btn-outline-warning m-5 text-decoration-none"> That was
-        awesome, let's do
-        another one! </a>
-</div>
-{% endblock %}
+
+            {% endblock %}
