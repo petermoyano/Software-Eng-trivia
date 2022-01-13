@@ -11,7 +11,7 @@ db.create_all()
 
 def seed_users():
     stranger = User(username="stranger", 
-        password= "stranger") 
+        password= "Stra#$548ger") 
 
     user2 = User(username="user2", 
         password= bcrypt.generate_password_hash("user2").decode('UTF-8'))
